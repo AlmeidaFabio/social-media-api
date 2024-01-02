@@ -1,0 +1,98 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String      @id @default(uuid())
+  firstName String
+  lastName  String
+  email     String      @unique
+  password  String
+  birthdate String
+  city      String?     @default("")
+  work      String?     @default("")
+  avatar    Avatar?
+  cover     Cover?
+  photos    Photos[]
+  posts     Posts[]
+  following Relations[] @relation("following")
+  follow    Relations[] @relation("follow")
+  comments  Comments[]
+  likes     Likes[]
+}
+
+model Avatar {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  fileName     String
+  originalName String
+  url          String
+  createdAt    DateTime @default(now())
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model Cover {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  fileName     String
+  originalName String
+  url          String
+  createdAt    DateTime @default(now())
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model Photos {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  fileName     String
+  originalName String
+  url          String
+  createdAt    DateTime @default(now())
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model Relations {
+  id        String @id @default(uuid())
+  userFrom  String @unique
+  userTo    String @unique
+  following User?  @relation("following", fields: [userFrom], references: [id])
+  follow    User?  @relation("follow", fields: [userTo], references: [id])
+}
+
+model Posts {
+  id        String     @id @default(uuid())
+  userId    String     @unique
+  type      String
+  body      String
+  createdAt DateTime   @default(now())
+  user      User       @relation(fields: [userId], references: [id])
+  Comments  Comments[]
+  Likes     Likes[]
+}
+
+model Comments {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  postId    String   @unique
+  body      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  post      Posts    @relation(fields: [postId], references: [id])
+}
+
+model Likes {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  postId    String   @unique
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  post      Posts    @relation(fields: [postId], references: [id])
+}
