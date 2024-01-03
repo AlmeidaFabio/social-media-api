@@ -1,6 +1,7 @@
 import { Router } from "express";
 import * as users from "../controllers/userControllers";
 import { Auth } from "../middlewares/Auth";
+import multer from 'multer'
 
 const auth = new Auth()
 
