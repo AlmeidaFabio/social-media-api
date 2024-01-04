@@ -39,10 +39,21 @@ export class UploadImageController {
                             .toFile(`./public/images/${fieldname}s/${filename}`);
                         // await unlink(path); TODO: fix the permission error
 
-                        const newAvatar = await uploadServices.uploadAvatar.execute(data)
+                        const oldAvatar = await uploadServices.findAvatarByUserId.execute(userId)
 
-                        return res.status(201).json(newAvatar);
+                        if (oldAvatar) {
+                            await uploadServices.deleteAvatar.execute(oldAvatar.id)
+
+                            const newAvatar = await uploadServices.uploadAvatar.execute(data)
+
+                            return res.status(201).json(newAvatar);
+                        } else {
+                            const newAvatar = await uploadServices.uploadAvatar.execute(data)
+
+                            return res.status(201).json(newAvatar);
+                        }
                     }
+                    
                     if (req.file.fieldname === 'cover') {
                         const data: CoverCreateData = {
                             fileName: filename,
@@ -60,9 +71,19 @@ export class UploadImageController {
                             .toFile(`./public/images/${fieldname}s/${filename}`);
                         // await unlink(path); TODO: fix the permission error
 
-                        const newCover = await uploadServices.uploadCover.execute(data)
+                        const oldCover = await uploadServices.findCoverByUserId.execute(userId)
 
-                        return res.status(201).json(newCover);
+                        if (oldCover) {
+                            await uploadServices.deleteCover.execute(oldCover.id)
+
+                            const newCover = await uploadServices.uploadCover.execute(data)
+
+                            return res.status(201).json(newCover);
+                        } else {
+                            const newCover = await uploadServices.uploadCover.execute(data)
+
+                            return res.status(201).json(newCover);
+                        }
                     }
                 }
             } else {

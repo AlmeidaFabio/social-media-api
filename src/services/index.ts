@@ -1,4 +1,4 @@
-import { uploadAvatar, uploadCover } from "./uploadServices";
+import { deleteAvatar, deleteCover, findAvatarByUserId, findCoverByUserId, uploadAvatar, uploadCover } from "./uploadServices";
 import { findByEmail, signup } from "./userServices";
 
 export const userServices = {
@@ -8,5 +8,9 @@ export const userServices = {
 
 export const uploadServices = {
     uploadAvatar,
-    uploadCover
+    uploadCover,
+    findAvatarByUserId,
+    findCoverByUserId,
+    deleteAvatar,
+    deleteCover
 }

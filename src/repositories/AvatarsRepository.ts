@@ -20,4 +20,27 @@ export class AvatarsRepository implements AvatarRepositoryInterface {
             throw new Error(`Error in AvatarsRepository:uploadAvatar: ${error.message}`)
         }
     }
+
+    findAvatarByUserId = async (id: string): Promise<Image | null> => {
+        try {
+            const avatar = await this.prisma.avatar.findFirst({
+                where: {
+                    userId: id
+                }
+            })
+            return avatar
+        } catch (error: any) {
+            throw new Error(`Error in AvatarsRepository:findAvatarByUserId: ${error.message}`)
+        }
+    };
+
+    deleteAvatar = async (id: string): Promise<Image> => {
+        try {
+            return await this.prisma.avatar.delete({
+                where: { id }
+            })
+        } catch (error:any) {
+            throw new Error(`Error in AvatarsRepository:deleteAvatar: ${error.message}`)
+        }
+    };
 }

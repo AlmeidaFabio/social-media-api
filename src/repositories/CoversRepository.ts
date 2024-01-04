@@ -20,4 +20,27 @@ export class CoversRepository implements CoverRepositoryInterface {
             throw new Error(`Error in CoversRepository:uploadCover: ${error.message}`)
         }
     }
+
+    findCoverByUserId = async (id: string): Promise<Image | null> => {
+        try {
+            const avatar = await this.prisma.cover.findFirst({
+                where: {
+                    userId: id
+                }
+            })
+            return avatar
+        } catch (error: any) {
+            throw new Error(`Error in CoversRepository:findCoverByUserId: ${error.message}`)
+        }
+    };
+
+    deleteCover = async (id: string): Promise<Image> => {
+        try {
+            return await this.prisma.cover.delete({
+                where: { id }
+            })
+        } catch (error:any) {
+            throw new Error(`Error in CoversRepository:deleteCover: ${error.message}`)
+        }
+    };
 }
