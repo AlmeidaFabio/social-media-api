@@ -8,15 +8,15 @@ interface StorageTypes {
 }
 
 const uploadFolder = (fieldname: string) => {
-    return path.resolve(__dirname, '..', '..', 'tmp', `${fieldname}`)
+    return path.resolve(__dirname, '..', '..', 'tmp')
 }
 
 const storageTypes: StorageTypes = {
     local: multer.diskStorage({
-        destination: (req, file, cb) => {
+        destination: (req:Request, file: Express.Multer.File, cb) => {
             cb(null, uploadFolder(file.fieldname))
         },
-        filename: (req, file, cb) => {
+        filename: (req:Request, file:Express.Multer.File, cb) => {
             crypto.randomBytes(16, (err, hash) => {
                 if(err) cb(null, err.message)
 

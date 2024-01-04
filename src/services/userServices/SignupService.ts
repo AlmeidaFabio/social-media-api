@@ -1,5 +1,5 @@
 import { UserRepositoryInterface } from "../../interfaces/UserRepositoryInterface";
-import { UserCreateData } from "../../types/UserData";
+import { UserCreateData } from "../../types/CreateData";
 
 export class SignupService {
     constructor(private repository: UserRepositoryInterface){}

@@ -1,6 +1,6 @@
-import { UsersRepository } from "../../repositories/UsersRepository";
-import { FindUserByEmailService } from "./FindUserByEmail";
-import { SignupService } from "./SignupService";
+import { UsersRepository } from "../../repositories/UsersRepository"
+import { FindUserByEmailService } from "./FindUserByEmail"
+import { SignupService } from "./SignupService"
 
 const usersRepository = new UsersRepository()
 

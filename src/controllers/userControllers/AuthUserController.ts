@@ -1,8 +1,8 @@
 import { RequestHandler } from "express";
-import * as userServices from "../../services/userServices";
 import { z } from "zod";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { userServices } from "../../services";
 
 export class AuthUserController {
     constructor() {

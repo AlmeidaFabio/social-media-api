@@ -1,8 +1,8 @@
 import { RequestHandler } from "express";
-import * as userServices from '../../services/userServices'
+import { userServices } from '../../services'
 import bcrypt from 'bcrypt';
 import { z } from  'zod'
-import { UserCreateData } from "../../types/UserData";
+import { UserCreateData } from "../../types/CreateData";
 
 export class CreateUserController {
     constructor() {

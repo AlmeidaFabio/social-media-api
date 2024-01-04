@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { UserRepositoryInterface } from "../interfaces/UserRepositoryInterface";
-import { UserCreateData } from "../types/UserData";
+import { UserCreateData } from "../types/CreateData";
 import { User } from "../types/User";
 
 export class UsersRepository implements UserRepositoryInterface {
