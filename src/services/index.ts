@@ -1,4 +1,4 @@
-import { uploadAvatar } from "./uploadServices";
+import { uploadAvatar, uploadCover } from "./uploadServices";
 import { findByEmail, signup } from "./userServices";
 
 export const userServices = {
@@ -7,5 +7,6 @@ export const userServices = {
 }
 
 export const uploadServices = {
-    uploadAvatar
+    uploadAvatar,
+    uploadCover
 }

@@ -1,10 +1,10 @@
 import { AvatarRepositoryInterface } from "../../interfaces/AvatarRepositoryInterface";
-import { ImageCreateData } from "../../types/CreateData";
+import { AvatarCreateData } from "../../types/CreateData";
 
 export class UploadAvatarService {
     constructor(private repository: AvatarRepositoryInterface){}
 
-    execute = async (data: ImageCreateData) => {
+    execute = async (data: AvatarCreateData) => {
         try {
             const avatar = await this.repository.uploadAvatar(data)
             return avatar

@@ -12,5 +12,6 @@ const router = Router()
 router.post('/users', users.createController.create)
 router.post('/users/login', users.authController.login)
 router.post('/users/avatar', auth.private, multer(Upload).single('avatar'), images.uploadImageController.uploadImage as any)
+router.post('/users/cover', auth.private, multer(Upload).single('cover'), images.uploadImageController.uploadImage as any)
 
 export default router

@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { AvatarRepositoryInterface } from "../interfaces/AvatarRepositoryInterface";
-import { ImageCreateData } from "../types/CreateData";
+import { AvatarCreateData } from "../types/CreateData";
 import { Image } from "../types/Image";
 
 export class AvatarsRepository implements AvatarRepositoryInterface {
@@ -10,7 +10,7 @@ export class AvatarsRepository implements AvatarRepositoryInterface {
         this.prisma = new PrismaClient()
     }
 
-    uploadAvatar = async (data: ImageCreateData): Promise<Image> => {
+    uploadAvatar = async (data: AvatarCreateData): Promise<Image> => {
         try {
             const avatar = await this.prisma.avatar.create({
                 data

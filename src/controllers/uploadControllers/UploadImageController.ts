@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import jwt from 'jsonwebtoken';
 import sharp from "sharp";
 import { unlink } from 'fs/promises'
-import { ImageCreateData } from "../../types/CreateData";
+import { AvatarCreateData, CoverCreateData } from "../../types/CreateData";
 import { uploadServices } from "../../services";
 
 interface MulterRequest extends Request {
@@ -25,23 +25,44 @@ export class UploadImageController {
                 if (loggedUser) {
                     const userId = typeof loggedUser === 'string' ? loggedUser : loggedUser['id'];
 
-                    const data: ImageCreateData = {
-                        fileName: filename,
-                        originalName: originalname,
-                        url: `${process.env.BASE_URL}:${process.env.PORT}/public/images/${fieldname}s/${filename}`,
-                        userId: userId as string
-                    }
-
-                    await sharp(path)
-                        .resize(300)
-                        .toFormat('jpeg')
-                        .toFile(`./public/images/${fieldname}s/${filename}`);
-                    // await unlink(path); TODO: fix the permission error
-
                     if (req.file.fieldname === 'avatar') {
+                        const data: AvatarCreateData = {
+                            fileName: filename,
+                            originalName: originalname,
+                            url: `${process.env.BASE_URL}:${process.env.PORT}/public/images/${fieldname}s/${filename}`,
+                            userId: userId as string
+                        }
+
+                        await sharp(path)
+                            .resize(300)
+                            .toFormat('jpeg')
+                            .toFile(`./public/images/${fieldname}s/${filename}`);
+                        // await unlink(path); TODO: fix the permission error
+
                         const newAvatar = await uploadServices.uploadAvatar.execute(data)
 
                         return res.status(201).json(newAvatar);
+                    }
+                    if (req.file.fieldname === 'cover') {
+                        const data: CoverCreateData = {
+                            fileName: filename,
+                            originalName: originalname,
+                            url: `${process.env.BASE_URL}:${process.env.PORT}/public/images/${fieldname}s/${filename}`,
+                            userId: userId as string
+                        }
+
+                        await sharp(path)
+                            .resize({
+                                fit: sharp.fit.contain,
+                                width: 800
+                            })
+                            .toFormat('jpeg')
+                            .toFile(`./public/images/${fieldname}s/${filename}`);
+                        // await unlink(path); TODO: fix the permission error
+
+                        const newCover = await uploadServices.uploadCover.execute(data)
+
+                        return res.status(201).json(newCover);
                     }
                 }
             } else {
