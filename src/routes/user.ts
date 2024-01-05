@@ -13,5 +13,7 @@ router.post('/signup', users.createController.create)
 router.post('/login', users.authController.login)
 router.post('/avatar', auth.private, multer(Upload).single('avatar'), images.uploadImageController.uploadImage as any)
 router.post('/cover', auth.private, multer(Upload).single('cover'), images.uploadImageController.uploadImage as any)
+router.get('/', auth.private, users.getUserController.read)
+router.get('/:id', auth.private, users.getUserController.read)
 
 export default router
