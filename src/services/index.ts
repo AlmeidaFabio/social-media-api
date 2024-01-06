@@ -1,4 +1,5 @@
-import { deleteAvatar, deleteCover, findAvatarByUserId, findCoverByUserId, uploadAvatar, uploadCover } from "./uploadServices";
+import { createPost } from "./postsServices";
+import { deleteAvatar, deleteCover, deletePhoto, findAvatarByUserId, findCoverByUserId, findPhotoById, uploadAvatar, uploadCover, uploadPhoto } from "./uploadServices";
 import { findByEmail, findById, signup } from "./userServices";
 
 export const userServices = {
@@ -13,5 +14,12 @@ export const uploadServices = {
     findAvatarByUserId,
     findCoverByUserId,
     deleteAvatar,
-    deleteCover
+    deleteCover,
+    uploadPhoto,
+    findPhotoById,
+    deletePhoto
+}
+
+export const postServices = {
+    createPost
 }

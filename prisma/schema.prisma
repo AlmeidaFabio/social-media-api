@@ -51,7 +51,7 @@ model Cover {
 
 model Photos {
   id           String   @id @default(uuid())
-  userId       String   @unique
+  userId       String
   fileName     String
   originalName String
   url          String
@@ -61,17 +61,18 @@ model Photos {
 
 model Relations {
   id        String @id @default(uuid())
-  userFrom  String @unique
-  userTo    String @unique
+  userFrom  String
+  userTo    String
   following User?  @relation("following", fields: [userFrom], references: [id])
   follow    User?  @relation("follow", fields: [userTo], references: [id])
 }
 
 model Posts {
   id        String     @id @default(uuid())
-  userId    String     @unique
-  type      String
+  userId    String
+  type      String     @default("text")
   body      String
+  legend    String?    @default("")
   createdAt DateTime   @default(now())
   user      User       @relation(fields: [userId], references: [id])
   comments  Comments[]
@@ -80,8 +81,8 @@ model Posts {
 
 model Comments {
   id        String   @id @default(uuid())
-  userId    String   @unique
-  postId    String   @unique
+  userId    String
+  postId    String
   body      String
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])

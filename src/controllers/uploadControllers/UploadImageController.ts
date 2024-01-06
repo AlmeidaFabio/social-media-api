@@ -85,6 +85,8 @@ export class UploadImageController {
                             return res.status(201).json(newCover);
                         }
                     }
+                } else {
+                    return res.status(400).json({ error: `Unauthorized!!` })
                 }
             } else {
                 return res.status(400).json({ error: `Unauthorized!!` })
