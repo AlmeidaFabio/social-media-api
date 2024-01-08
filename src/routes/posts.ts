@@ -9,5 +9,6 @@ const auth = new Auth()
 const router = Router()
 
 router.post('/add', auth.private, multer(Upload).single('photo'), posts.createPostController.createPost as any)
+router.post('/like/:id', auth.private, posts.likeController.setLiked)
 
 export default router

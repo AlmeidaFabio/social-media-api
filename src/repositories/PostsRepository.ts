@@ -20,4 +20,15 @@ export class PostsRepository implements PostsRepositoryInterface {
             throw new Error(`Error in PostsRepository:create: ${error.message}`)
         }
     }
+
+    findPostById = async (id: string): Promise<Post | null> => {
+        try {
+            const post = await this.prisma.posts.findFirst({
+                where: { id }
+            })
+            return post
+        } catch (error:any) {
+            throw new Error(`Error in PostsRepository:findPostById: ${error.message}`)
+        }
+    };
 }

@@ -11,3 +11,5 @@ export type CoverCreateData = Prisma.Args<typeof prisma.cover, 'create'>['data']
 export type PhotoCreateData = Prisma.Args<typeof prisma.photos, 'create'>['data'];
 
 export type PostCreateData = Prisma.Args<typeof prisma.posts, 'create'>['data'];
+
+export type LikeCreateData = Prisma.Args<typeof prisma.likes, 'create'>['data'];

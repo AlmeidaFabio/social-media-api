@@ -1,4 +1,4 @@
-import { createPost } from "./postsServices";
+import { createPost, findPostById, getLikeByPostAndUserId, removeLiked, setLiked } from "./postsServices";
 import { deleteAvatar, deleteCover, deletePhoto, findAvatarByUserId, findCoverByUserId, findPhotoById, uploadAvatar, uploadCover, uploadPhoto } from "./uploadServices";
 import { findByEmail, findById, signup } from "./userServices";
 
@@ -21,5 +21,9 @@ export const uploadServices = {
 }
 
 export const postServices = {
-    createPost
+    createPost,
+    findPostById,
+    setLiked,
+    removeLiked,
+    getLikeByPostAndUserId
 }
