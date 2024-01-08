@@ -44,7 +44,7 @@ export class SetLikedController {
             }
             
         } catch (error:any) {
-            return res.status(400).json({error: `Error i SetLikedController: ${error}`})
+            return res.status(400).json({error: `Error in SetLikedController: ${error}`})
         }
     }
 }

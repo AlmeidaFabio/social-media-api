@@ -10,5 +10,7 @@ const router = Router()
 
 router.post('/add', auth.private, multer(Upload).single('photo'), posts.createPostController.createPost as any)
 router.post('/like/:id', auth.private, posts.likeController.setLiked)
+router.post('/comment/:id', auth.private, posts.commentController.comment)
+router.get('/comments/:id', posts.getCommentsController.getComments)
 
 export default router
