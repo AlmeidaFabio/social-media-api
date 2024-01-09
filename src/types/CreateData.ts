@@ -15,3 +15,5 @@ export type PostCreateData = Prisma.Args<typeof prisma.posts, 'create'>['data'];
 export type LikeCreateData = Prisma.Args<typeof prisma.likes, 'create'>['data'];
 
 export type CommentCreateData = Prisma.Args<typeof prisma.comments, 'create'>['data'];
+
+export type RelationCreateData = Prisma.Args<typeof prisma.relations, 'create'>['data'];

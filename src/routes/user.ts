@@ -15,5 +15,11 @@ router.post('/avatar', auth.private, multer(Upload).single('avatar'), images.upl
 router.post('/cover', auth.private, multer(Upload).single('cover'), images.uploadImageController.uploadImage as any)
 router.get('/', auth.private, users.getUserController.read)
 router.get('/:id', auth.private, users.getUserController.read)
+router.get('/follow/:id', auth.private, users.userFollowController.follow)
+router.get('/followers', auth.private, users.listUserFollowers.listFollowers)
+router.get('/followers/:id', auth.private, users.listUserFollowers.listFollowers)
+router.get('/following', auth.private, users.listFollowings.listFollowings)
+router.get('/following/:id', auth.private, users.listFollowings.listFollowings)
+
 
 export default router
