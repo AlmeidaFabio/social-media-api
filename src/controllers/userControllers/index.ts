@@ -9,14 +9,14 @@ const createController = new CreateUserController()
 const authController = new AuthUserController()
 const getUserController = new GetUserController()
 const userFollowController = new UserFollowController()
-const listUserFollowers = new ListUserFollowersController()
-const listFollowings = new ListUserFollowingsController()
+const listUserFollowersController = new ListUserFollowersController()
+const listUserFollowingsController = new ListUserFollowingsController()
 
 export {
     createController,
     authController,
     getUserController,
     userFollowController,
-    listFollowings,
-    listUserFollowers
+    listUserFollowingsController,
+    listUserFollowersController
 }

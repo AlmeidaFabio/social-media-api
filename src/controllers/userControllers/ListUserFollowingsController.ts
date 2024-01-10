@@ -24,14 +24,19 @@ export class ListUserFollowingsController {
                 id = userId as string
             }
 
+            const following: string[] = []
+
             const userExists = await userServices.findById.execute(id)
 
             if(!userExists) {
                 return res.status(400).json({error: 'User not found'});
             }
 
-            const following = await userServices.listUserFollowings.execute(id)
-
+            const followingList = await userServices.listUserFollowings.execute(id)
+            followingList.map(item => {
+                following.push(item.userTo)
+            })
+            
             return res.status(200).json(following)
 
         } catch (error) {

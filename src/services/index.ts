@@ -1,4 +1,4 @@
-import { comment, createPost, findPostById, getCommentsByPostId, getLikeByPostAndUserId, removeLiked, setLiked } from "./postsServices";
+import { comment, createPost, findPostById, getCommentsByPostId, getLikeByPostAndUserId, listPostsByUserId, removeLiked, setLiked } from "./postsServices";
 import { deleteAvatar, deleteCover, deletePhoto, findAvatarByUserId, findCoverByUserId, findPhotoById, uploadAvatar, uploadCover, uploadPhoto } from "./uploadServices";
 import { createRelation, deleteUserRelation, findByEmail, findById, getUserRelation, listUserFollowers, listUserFollowings, signup } from "./userServices";
 
@@ -28,6 +28,7 @@ export const uploadServices = {
 export const postServices = {
     createPost,
     findPostById,
+    listPostsByUserId,
     setLiked,
     removeLiked,
     getLikeByPostAndUserId,

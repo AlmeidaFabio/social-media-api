@@ -10,16 +10,26 @@ const auth = new Auth()
 const router = Router()
 
 router.post('/signup', users.createController.create)
+
 router.post('/login', users.authController.login)
+
 router.post('/avatar', auth.private, multer(Upload).single('avatar'), images.uploadImageController.uploadImage as any)
+
 router.post('/cover', auth.private, multer(Upload).single('cover'), images.uploadImageController.uploadImage as any)
+
 router.get('/', auth.private, users.getUserController.read)
+
 router.get('/:id', auth.private, users.getUserController.read)
+
 router.get('/follow/:id', auth.private, users.userFollowController.follow)
-router.get('/followers', auth.private, users.listUserFollowers.listFollowers)
-router.get('/followers/:id', auth.private, users.listUserFollowers.listFollowers)
-router.get('/following', auth.private, users.listFollowings.listFollowings)
-router.get('/following/:id', auth.private, users.listFollowings.listFollowings)
+
+router.get('/followers', auth.private, users.listUserFollowersController.listFollowers)
+
+router.get('/followers/:id', auth.private, users.listUserFollowersController.listFollowers)
+
+router.get('/following', auth.private, users.listUserFollowingsController.listFollowings)
+
+router.get('/following/:id', auth.private, users.listUserFollowingsController.listFollowings)
 
 
 export default router

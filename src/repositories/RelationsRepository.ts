@@ -1,7 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 import { RelationsRepositoryInterface } from "../interfaces/RelationsRepositoryInterface";
-import { Follower } from "../types/Follower";
-import { Following } from "../types/Following";
 import { Relation } from "../types/Relation";
 import { RelationCreateData } from "../types/CreateData";
 
@@ -46,7 +44,7 @@ export class RelationsRepository implements RelationsRepositoryInterface {
         }
     };
 
-    getFollowers = async (id: string): Promise<Follower[]> => {
+    getFollowers = async (id: string): Promise<Relation[]> => {
         try {
             const followers = await this.prisma.relations.findMany({
                 where: {
@@ -59,7 +57,7 @@ export class RelationsRepository implements RelationsRepositoryInterface {
         }
     };
 
-    getFollowings = async (id: string): Promise<Following[]> => {
+    getFollowings = async (id: string): Promise<Relation[]> => {
         try {
             const followings = await this.prisma.relations.findMany({
                 where: {

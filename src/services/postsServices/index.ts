@@ -6,6 +6,7 @@ import { CreatePostService } from "./CreatePost";
 import { FindPostByIdService } from "./FindPostById";
 import { GetCommentsByPostIdService } from "./GetCommentsByPostId";
 import { GetLikeByPostAndUserIdService } from "./GetLikeByPostAndUserId";
+import { ListPostsByUserIdService } from "./ListPostsByUserId";
 import { RemoveLikedService } from "./RemoveLiked";
 import { SetLikedService } from "./SetLiked";
 
@@ -15,6 +16,7 @@ const commentsRepository = new CommentsRepository()
 
 export const createPost = new CreatePostService(postRepository)
 export const findPostById = new FindPostByIdService(postRepository)
+export const listPostsByUserId = new ListPostsByUserIdService(postRepository)
 
 export const setLiked = new SetLikedService(likesRepository)
 export const removeLiked = new RemoveLikedService(likesRepository)
