@@ -19,7 +19,9 @@ router.post('/cover', auth.private, multer(Upload).single('cover'), images.uploa
 
 router.get('/', auth.private, users.getUserController.read)
 
-router.get('/:id', auth.private, users.getUserController.read)
+router.get('/feed', auth.private, users.userFeedController.getUserFeed)
+
+router.get('/feed/:id', auth.private, users.userFeedController.getUserFeed)
 
 router.get('/follow/:id', auth.private, users.userFollowController.follow)
 
@@ -30,6 +32,8 @@ router.get('/followers/:id', auth.private, users.listUserFollowersController.lis
 router.get('/following', auth.private, users.listUserFollowingsController.listFollowings)
 
 router.get('/following/:id', auth.private, users.listUserFollowingsController.listFollowings)
+
+router.get('/:id', auth.private, users.getUserController.read)
 
 
 export default router

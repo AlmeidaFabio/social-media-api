@@ -3,6 +3,7 @@ import { CreateUserController } from "./CreateUserController";
 import { GetUserController } from "./GetUserController";
 import { ListUserFollowersController } from "./ListUserFollowersController";
 import { ListUserFollowingsController } from "./ListUserFollowingsController";
+import { UserFeedController } from "./UserFeedController";
 import { UserFollowController } from "./UserFollowController";
 
 const createController = new CreateUserController()
@@ -11,6 +12,7 @@ const getUserController = new GetUserController()
 const userFollowController = new UserFollowController()
 const listUserFollowersController = new ListUserFollowersController()
 const listUserFollowingsController = new ListUserFollowingsController()
+const userFeedController = new UserFeedController()
 
 export {
     createController,
@@ -18,5 +20,6 @@ export {
     getUserController,
     userFollowController,
     listUserFollowingsController,
-    listUserFollowersController
+    listUserFollowersController,
+    userFeedController
 }

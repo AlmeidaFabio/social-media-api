@@ -3,6 +3,8 @@ import jwt from 'jsonwebtoken';
 import { userServices } from "../../services";
 
 export class ListUserFollowersController {
+    constructor(){}
+    
     listFollowers: RequestHandler = async (req, res) => {
         const token = req.headers.authorization
         let id = req.params.id
