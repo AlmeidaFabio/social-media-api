@@ -33,6 +33,10 @@ router.get('/following', auth.private, users.listUserFollowingsController.listFo
 
 router.get('/following/:id', auth.private, users.listUserFollowingsController.listFollowings)
 
+router.get('/photos', auth.private, users.getUserPhotosController.getPhotos)
+
+router.get('/photos/:id', auth.private, users.getUserPhotosController.getPhotos)
+
 router.get('/:id', auth.private, users.getUserController.read)
 
 
