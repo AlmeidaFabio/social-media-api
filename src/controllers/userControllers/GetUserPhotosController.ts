@@ -1,7 +1,6 @@
 import { RequestHandler } from "express";
 import jwt from 'jsonwebtoken';
 import { userServices } from "../../services";
-import { Photo } from "../../types/Photo";
 
 export class GetUserPhotosController {
     constructor() {}

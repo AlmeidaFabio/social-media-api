@@ -1,5 +1,6 @@
 import { AuthUserController } from "./AuthUserController";
 import { CreateUserController } from "./CreateUserController";
+import { EditUserInfosController } from "./EditUserInfosController";
 import { GetUserController } from "./GetUserController";
 import { GetUserPhotosController } from "./GetUserPhotosController";
 import { ListUserFollowersController } from "./ListUserFollowersController";
@@ -15,6 +16,7 @@ const listUserFollowersController = new ListUserFollowersController()
 const listUserFollowingsController = new ListUserFollowingsController()
 const userFeedController = new UserFeedController()
 const getUserPhotosController = new GetUserPhotosController()
+const ediUserController = new EditUserInfosController()
 
 export {
     createController,
@@ -24,5 +26,6 @@ export {
     listUserFollowingsController,
     listUserFollowersController,
     userFeedController,
-    getUserPhotosController
+    getUserPhotosController,
+    ediUserController
 }

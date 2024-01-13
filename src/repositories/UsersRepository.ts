@@ -1,7 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 import { UserRepositoryInterface } from "../interfaces/UserRepositoryInterface";
 import { UserCreateData } from "../types/CreateData";
 import { User } from "../types/User";
+import { UserUpdateData } from "../types/UpdateData";
 
 export class UsersRepository implements UserRepositoryInterface {
     private prisma: PrismaClient
@@ -53,4 +54,15 @@ export class UsersRepository implements UserRepositoryInterface {
             throw new Error(`Error in UsersRepository:findUserById: ${error.message}`)
         }
     }
+
+    editUserInfos = async (id: string, data: UserUpdateData): Promise<User> => {
+        try {
+            return await this.prisma.user.update({
+                where: { id },
+                data
+            })
+        } catch (error:any) {
+            throw new Error(`Error in UsersRepository:editUserInfos: ${error.message}`)
+        }
+    };
 }

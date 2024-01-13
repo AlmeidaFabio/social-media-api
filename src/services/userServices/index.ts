@@ -3,6 +3,7 @@ import { RelationsRepository } from "../../repositories/RelationsRepository"
 import { UsersRepository } from "../../repositories/UsersRepository"
 import { CreateUserRelationService } from "./CreateUserRelation"
 import { DeleteUserRelationService } from "./DeleteUserRelation"
+import { EditUserService } from "./EditUser"
 import { FindUserByEmailService } from "./FindUserByEmail"
 import { FindUserByIdService } from "./FindUserById"
 import { GetUserPhotosService } from "./GetUserPhotos"
@@ -25,3 +26,4 @@ export const deleteUserRelation = new DeleteUserRelationService(relationsReposit
 export const listUserFollowers = new ListUserFollowersService(relationsRepository)
 export const listUserFollowings = new ListUserFollowingsService(relationsRepository)
 export const getUserPhotos = new GetUserPhotosService(postRepository)
+export const editUser = new EditUserService(usersRepository)

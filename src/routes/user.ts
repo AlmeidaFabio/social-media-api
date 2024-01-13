@@ -39,5 +39,7 @@ router.get('/photos/:id', auth.private, users.getUserPhotosController.getPhotos)
 
 router.get('/:id', auth.private, users.getUserController.read)
 
+router.put('/config', auth.private, users.ediUserController.editInfos)
+
 
 export default router

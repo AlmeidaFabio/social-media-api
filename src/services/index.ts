@@ -1,6 +1,6 @@
 import { comment, createPost, findPostById, getCommentsByPostId, getLikeByPostAndUserId, listPostsByUserId, removeLiked, setLiked } from "./postsServices";
 import { deleteAvatar, deleteCover, deletePhoto, findAvatarByUserId, findCoverByUserId, findPhotoById, uploadAvatar, uploadCover, uploadPhoto } from "./uploadServices";
-import { createRelation, deleteUserRelation, findByEmail, findById, getUserPhotos, getUserRelation, listUserFollowers, listUserFollowings, signup } from "./userServices";
+import { createRelation, deleteUserRelation, editUser, findByEmail, findById, getUserPhotos, getUserRelation, listUserFollowers, listUserFollowings, signup } from "./userServices";
 
 export const userServices = {
     signup,
@@ -11,7 +11,8 @@ export const userServices = {
     getUserRelation,
     listUserFollowers,
     listUserFollowings,
-    getUserPhotos
+    getUserPhotos,
+    editUser
 }
 
 export const uploadServices = {

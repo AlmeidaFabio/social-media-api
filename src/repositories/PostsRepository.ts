@@ -3,7 +3,6 @@ import { PostsRepositoryInterface } from "../interfaces/PostsRepositoryInterface
 import { PostCreateData } from "../types/CreateData";
 import { Post } from "../types/Post";
 import { Photo } from "../types/Photo";
-import { comment } from "../services/postsServices";
 
 export class PostsRepository implements PostsRepositoryInterface {
     private prisma: PrismaClient
