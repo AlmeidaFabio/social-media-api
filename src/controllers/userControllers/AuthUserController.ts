@@ -24,16 +24,16 @@ export class AuthUserController {
             const user = await userServices.findByEmail.execute(body.data.email)
 
             if(!user) {
-                return {error: 'User does not exists!'};
+                return res.status(400).json({error: 'User does not exists!'});
             }
 
             if(!await bcrypt.compare(body.data.password.toString(), user.password)) {
-                return {error: 'Invalid password!'};
+                return res.status(400).json({error: 'Invalid password!'});
             }
 
             if(!process.env.SECRET_KEY) {
                 console.error("Secret key is not defined in the environment variables.");
-                return {error: 'Secret key is not defined in the environment variables.'};
+                return res.status(400).json({error: 'Secret key is not defined in the environment variables.'});
             } else {
                 const token = jwt.sign({ id:user.id }, process.env.SECRET_KEY, {
                     expiresIn:86400

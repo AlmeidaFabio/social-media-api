@@ -2,9 +2,7 @@ import { RequestHandler } from "express";
 import { userServices } from '../../services'
 import jwt from 'jsonwebtoken';
 
-export class GetUserController {
-    constructor() {}
-
+export class GetUserController { 
     read:RequestHandler = async (req, res) => {
         const id = req.params.id
         const token = req.headers.authorization

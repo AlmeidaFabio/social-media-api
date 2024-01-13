@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { date, z } from  'zod'
+import { z } from  'zod'
 import jwt from 'jsonwebtoken';
 import { userServices } from "../../services";
 

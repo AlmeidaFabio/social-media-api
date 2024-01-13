@@ -41,5 +41,6 @@ router.get('/:id', auth.private, users.getUserController.read)
 
 router.put('/config', auth.private, users.ediUserController.editInfos)
 
+router.put('/change-password', auth.private, users.changePasswordController.updatePass)
 
 export default router
