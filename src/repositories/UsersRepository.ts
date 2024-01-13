@@ -65,4 +65,24 @@ export class UsersRepository implements UserRepositoryInterface {
             throw new Error(`Error in UsersRepository:editUserInfos: ${error.message}`)
         }
     };
+
+    searchUsers = async (txt: string): Promise<User[]> => {
+        try {
+
+            const users = await this.prisma.user.findMany({
+                where: {
+                    firstName: {
+                        contains: `${txt}`
+                    } 
+                },
+                include: {
+                    avatar: true
+                }
+            })
+
+            return users
+        } catch (error:any) {
+            throw new Error(`Error in UsersRepository:editUserInfos: ${error.message}`)
+        }
+    };
 }

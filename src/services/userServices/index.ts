@@ -10,6 +10,7 @@ import { GetUserPhotosService } from "./GetUserPhotos"
 import { GetUserRelationService } from "./GetUserRelation"
 import { ListUserFollowersService } from "./ListUserFollowers"
 import { ListUserFollowingsService } from "./ListUserFollowings"
+import { SearchUsersService } from "./SearchUsers"
 import { SignupService } from "./Signup"
 
 const usersRepository = new UsersRepository()
@@ -27,3 +28,4 @@ export const listUserFollowers = new ListUserFollowersService(relationsRepositor
 export const listUserFollowings = new ListUserFollowingsService(relationsRepository)
 export const getUserPhotos = new GetUserPhotosService(postRepository)
 export const editUser = new EditUserService(usersRepository)
+export const searchUsers = new SearchUsersService(usersRepository)

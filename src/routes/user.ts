@@ -37,6 +37,8 @@ router.get('/photos', auth.private, users.getUserPhotosController.getPhotos)
 
 router.get('/photos/:id', auth.private, users.getUserPhotosController.getPhotos)
 
+router.get('/search', auth.private, users.searchController.search)
+
 router.get('/:id', auth.private, users.getUserController.read)
 
 router.put('/config', auth.private, users.ediUserController.editInfos)

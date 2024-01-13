@@ -3,8 +3,6 @@ import jwt from 'jsonwebtoken'
 import { postServices } from "../../services";
 
 export class UserFeedController {
-    constructor() { }
-
     getUserFeed: RequestHandler = async (req, res) => {
         const id = req.params.id
         const token = req.headers.authorization

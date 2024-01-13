@@ -30,7 +30,7 @@ export class ChangeUserPasswordController {
             const body = changePasswordSchema.safeParse(req.body)
 
             if(!body.success) {
-                return res.status(400).json({error: 'Dados inválidos'})
+                return res.status(400).json({error: 'Invalid data'})
             }
 
             if(body.data.password === body.data.password_confirm) {

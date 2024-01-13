@@ -7,4 +7,5 @@ export interface UserRepositoryInterface {
     findUserByEmail:(email:string) => Promise<User | null>;
     findUserById:(id:string) => Promise<User | null>;
     editUserInfos:(id:string, data:UserUpdateData) => Promise<User>;
+    searchUsers:(txt:string) => Promise<User[]>;
 }

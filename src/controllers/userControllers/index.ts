@@ -6,6 +6,7 @@ import { GetUserController } from "./GetUserController";
 import { GetUserPhotosController } from "./GetUserPhotosController";
 import { ListUserFollowersController } from "./ListUserFollowersController";
 import { ListUserFollowingsController } from "./ListUserFollowingsController";
+import { SearchUsersController } from "./SearchUsersController";
 import { UserFeedController } from "./UserFeedController";
 import { UserFollowController } from "./UserFollowController";
 
@@ -19,6 +20,7 @@ const userFeedController = new UserFeedController()
 const getUserPhotosController = new GetUserPhotosController()
 const ediUserController = new EditUserInfosController()
 const changePasswordController = new ChangeUserPasswordController()
+const searchController = new SearchUsersController()
 
 export {
     createController,
@@ -30,5 +32,6 @@ export {
     userFeedController,
     getUserPhotosController,
     ediUserController,
-    changePasswordController
+    changePasswordController,
+    searchController
 }
